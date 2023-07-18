@@ -2,7 +2,6 @@
 
 #functions
 def encode(password):
-    
     enc_password = ''
 
     for i in password:
@@ -37,12 +36,20 @@ def encode(password):
             i='2'
             enc_password = enc_password + i
     return enc_password
-    
-def decode():
-    pass
+
+def decode(enc_password):
+    dcd_password = ''
+    for num in enc_password:
+        if int(num) < 3:
+            pass_val = int(num) + 7
+            dcd_password += str(pass_val)
+        else:
+            pass_val = int(num) - 3
+            dcd_password += str(pass_val)
+    return dcd_password
+
 
 def main():
-
     # Variables - Initial values
     program_on = True
     enc_password = None
@@ -60,11 +67,12 @@ def main():
             print(enc_password)
 
         if user_option == 2:
-            pass
-
+            dcd_password = decode(enc_password)
+            print(f"The encoded password is {enc_password}, and the original password is {dcd_password}.")
 
         if user_option == 3:
             program_on = False
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()
